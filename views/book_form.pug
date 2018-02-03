@@ -1,0 +1,45 @@
+html
+  head
+    title
+    meta(name='viewport', content='width = device-width, initial-scale = 1')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css')
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js')
+    script.
+      $(document).ready(function() {
+      $('select').material_select();
+      });
+  body
+    nav
+      .nav-wrapper.container
+        a.brand-logo(href='#') Library
+        ul#nav-mobile.right.hide-on-med-and-down
+    .container
+      h1 Add New Book
+      .row
+        form(method='POST' action='').col.s12
+          .row
+            .input-field.col.s6
+              input#first_name.validate(type='text', placeholder='Name of book' name='title' required='true' value=(undefined===book ? '' : book.title) )
+              label(for='first_name') Title
+          .row
+            .col.s6
+              label Select Author
+              select#author.form-control(type='select', placeholder='Select author' name='author' required='true' )
+                for author in authors
+                 if book
+                    option(value=author._id selected=(author._id.toString()==book.author ? 'selected' : false) ) #{author.name}
+                 else
+                    option(value=author._id) #{author.name}
+          .row
+            .input-field.col.s6
+              input#isbn.validate(type='text', placeholder='ISBN13' name='isbn' value=(undefined===book ? '' : book.isbn) required='true')
+              label(for='isbn') ISBN
+          .row
+            .input-field.col.s12
+              input#description.validate(type='text', placeholder='Summary' name='summary' value=(undefined===book ? '' : book.summary) required='true')
+              label(for='summary') Summary
+          button.btn.waves-effect.waves-light(type='submit', name='action')
+            | Submit
+            i.material-icons.right send

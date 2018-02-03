@@ -1,0 +1,47 @@
+html
+  head
+    title #{author.name}
+    meta(name='viewport', content='width = device-width, initial-scale = 1')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css')
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js')
+    script.
+      $(document).ready(function() {
+      $('select').material_select();
+      });
+  body
+    nav
+      .nav-wrapper.container
+        a.brand-logo(href='#') Library
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='/catalog/books') Books
+          li
+            a(href='/catalog/authors') Authors
+    .container
+      h1
+        strong #{author.name}
+      h5
+        | Age: 
+        strong #{author.age}
+      h5
+        | Date of Birth: 
+        strong #{author.date_of_birth}
+      h6
+        strong Description:
+      p #{author.description}
+  
+      br
+    
+      h5
+        strong Books By This author
+      br
+      ul.collection
+            each book in author_books
+                li.collection-item
+                     a(href=book.url) #{book.title}
+                     dd #{book.summary}
+
+            else
+                p This author has no books.
