@@ -12,7 +12,7 @@ exports.author_list = function(req, res, next) {
       .sort([['name', 'ascending']])
       .exec(function (err, list_authors) {
         if (err) { return next(err); }
-        //Successful, so render
+        
         res.render('author_list', { title: 'Author List', author_list: list_authors });
       });
   
@@ -36,7 +36,7 @@ exports.author_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        // Successful, so render.
+        
         res.render('author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books } );
     });
 

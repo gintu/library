@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/cool', function(req, res, next) {
-  res.send('built foe weavedin by gintu');
+  res.send('built for weavedin by gintu');
 });
 
 module.exports = router;

@@ -66,9 +66,7 @@ exports.book_create_get = function(req, res, next) {
         authors: function(callback) {
             Author.find(callback);
         },
-       /* genres: function(callback) {
-            Genre.find(callback);
-        },*/
+      
     }, function(err, results) {
         if (err) { return next(err); }
         res.render('book_form', { title: 'Create Book', authors: results.authors });
@@ -112,9 +110,7 @@ exports.book_create_post = [
                 authors: function(callback) {
                     Author.find(callback);
                 },
-             /*   genres: function(callback) {
-                    Genre.find(callback);
-                },*/
+           
             }, function(err, results) {
                 if (err) { return next(err); }
 

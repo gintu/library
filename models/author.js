@@ -9,7 +9,7 @@ var AuthorSchema = new Schema(
     age:{type:Number},
     date_of_birth: {type: Date},
     description: {type: String},
-   // books: {type: Schema.ObjectId, ref: 'Book'},
+  
 
     date_of_death: {type: Date},
   }
