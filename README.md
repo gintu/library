@@ -17,3 +17,4 @@ To run
   - Backend: Node.js,MongoDB
 
 
+ps:install npm and node if you already haven't
